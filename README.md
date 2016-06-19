@@ -3,7 +3,7 @@ This is MonoKickstart, a standalone Mono "kick" application to run C# programs
 on GNU/Linux and macOS without depending on a system installation of Mono.
 
 ## License
-kick.c is released under the zlib license. See LICENSE for details.
+`kick.c` is released under the zlib license. See `LICENSE` for details.
 
 `binreloc` is released under the WTFPL license. See `binreloc.LICENSE` for details.
 
