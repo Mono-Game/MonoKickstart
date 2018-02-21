@@ -1,0 +1,17 @@
+#!/bin/bash
+LIBPATH=/Library/Frameworks/Mono.framework/Versions/Current/lib
+# space separated list of libraries
+cd precompiled/osx
+TARGETS=*.dylib
+for TARGET in ${TARGETS} ; do
+echo "Processing ${TARGET}"
+LIBFILE=${LIBPATH}/${TARGET}
+TARGETID=`otool -DX ${TARGET}`
+NEWTARGETID=@loader_path/${TARGET}
+install_name_tool -id ${NEWTARGETID} ${TARGET}
+install_name_tool -change ${LIBFILE} ${NEWTARGETID} ${TARGET}
+  for T2 in ${TARGETS} ; do
+	echo ${LIBPATH}/${T2} @loader_path/${T2} ${TARGET}
+  	install_name_tool -change ${LIBPATH}/${T2} @loader_path/${T2} ${TARGET}
+  done
+done
