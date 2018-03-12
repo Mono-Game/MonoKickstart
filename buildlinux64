@@ -12,5 +12,5 @@ make
 mkbundle --static --keeptemp -o mcs.bin.x86_64 -L /usr/lib/mono/4.5/ /usr/lib/mono/4.5/mcs.exe
 patch temp.c ../mcs.c.patch
 cc -o 'mcs.bin.x86_64' -Wall temp.c `pkg-config --cflags --libs mono-2`  temp.o
-cp *.bin.x86_64 ../
+cp /Source/build64/*.bin.x86 /Source/
 
