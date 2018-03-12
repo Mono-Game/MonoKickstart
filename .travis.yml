@@ -20,7 +20,9 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./buildmcs ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd build ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip MonoKickStartOSX.zip kick.bin.osx mcs.bin.osx ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" ubuntu:12.04
   /bin/bash -c "/Source/buildlinux64" ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" erwinchang/ubuntu-12.04-32bit
