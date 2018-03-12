@@ -9,7 +9,7 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/pkgconfig
 cp /usr/lib/libmono-2.0.a ../libmonosgen-2.0.a
 cmake -DCMAKE_C_FLAGS="-m64" ..
 make
-mkbundle --static --keeptemp -o mcs.x86_64.bin -L /usr/lib/mono/4.5/ /usr/lib/mono/4.5/mcs.exe
+mkbundle --static --keeptemp -o mcs.bin.x86_64 -L /usr/lib/mono/4.5/ /usr/lib/mono/4.5/mcs.exe
 patch temp.c ../mcs.c.patch
-cc -o 'mcs.x86_64.bin' -Wall temp.c `pkg-config --cflags --libs mono-2`  temp.o
+cc -o 'mcs.bin.x86_64' -Wall temp.c `pkg-config --cflags --libs mono-2`  temp.o
 
