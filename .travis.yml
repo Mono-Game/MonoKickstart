@@ -5,6 +5,9 @@ language: csharp
 os:
  - osx
  - linux
+matrix:
+  include:
+    -- osx_image: xcode6.4
 compiler:
   - clang
   - gcc
