@@ -20,14 +20,19 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./buildmcs ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip MonoKickStartOSX.zip kick.bin.osx mcs.bin.osx ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" ubuntu:12.04
   /bin/bash -c "/Source/buildlinux64" ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" erwinchang/ubuntu-12.04-32bit
   /bin/bash -c "linux32 --32bit i386 /Source/buildlinux32" ; fi
+if [[ "$TRAVIS_OS_NAME" == "linux" ]]; zip MonoKickStartLinux.zip kick.x86_64.bin mcs.x86_64.bin kick.x86.bin mcs.x86.bin  then ; fi
 deploy:
   provider: releases
   api_key:
     secure: E/VCIKBbZAW7Qcopw9OLUwLkNkSCg36uZ3yPRhEs3Qf5cPUUZ8SAraz0/dzR016T6B+OBx0GoiyUyoCJ8dhl1dUtmN4f3qQ9naWj+8YvZfLXhHrgbDkRQA4J0zz6wMoj8a6qY8fPoiphEWKt3MCgCc3syXj/R1MgUNTmv0P8r3I=
-  file: mcs.osx
+  file: 
+    - build/MonoKickStartOSX.zip
+    - build/MonoKickStartLinux.zip
   on:
     repo: MonoGame/MonoKickstart
+    tags: false
