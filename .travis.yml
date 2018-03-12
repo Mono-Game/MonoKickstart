@@ -25,7 +25,7 @@ script:
   /bin/bash -c "/Source/buildlinux64" ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" erwinchang/ubuntu-12.04-32bit
   /bin/bash -c "linux32 --32bit i386 /Source/buildlinux32" ; fi
-if [[ "$TRAVIS_OS_NAME" == "linux" ]]; zip MonoKickStartLinux.zip kick.x86_64.bin mcs.x86_64.bin kick.x86.bin mcs.x86.bin  then ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; zip MonoKickStartLinux.zip kick.x86_64.bin mcs.x86_64.bin kick.x86.bin mcs.x86.bin  then ; fi
 deploy:
   provider: releases
   api_key:
