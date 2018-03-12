@@ -36,4 +36,5 @@ deploy:
     - build/MonoKickStartOSX.zip
     - MonoKickStartLinux.zip
   on:
+    all_branches: true
     repo: MonoGame/MonoKickstart
