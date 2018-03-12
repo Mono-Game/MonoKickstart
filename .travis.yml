@@ -35,4 +35,3 @@ deploy:
     - build/MonoKickStartLinux.zip
   on:
     repo: MonoGame/MonoKickstart
-    tags: false
