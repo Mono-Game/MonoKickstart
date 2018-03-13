@@ -27,9 +27,7 @@ script:
   /bin/bash -c "/Source/buildlinux64" ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" erwinchang/ubuntu-12.04-32bit
   /bin/bash -c "linux32 --32bit i386 /Source/buildlinux32" ; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ls -l ; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pwd ; fi  
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ./MonoKickStartLinux.zip kick.x86_64.bin mcs.x86_64.bin kick.x86.bin mcs.x86.bin ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ./MonoKickStartLinux.zip kick.bin.x86_64 mcs.bin.x86_64 kick.bin.x86 mcs.bin.x86 ; fi
 deploy:
   skip_cleanup: true
   provider: releases
@@ -39,5 +37,6 @@ deploy:
     - build/MonoKickStartOSX.zip
     - MonoKickStartLinux.zip
   on:
-    branch: mono4.4
+    all_branches: true
+    #branch: mono4.4
     repo: MonoGame/MonoKickstart
