@@ -36,7 +36,6 @@ deploy:
     secure: E/VCIKBbZAW7Qcopw9OLUwLkNkSCg36uZ3yPRhEs3Qf5cPUUZ8SAraz0/dzR016T6B+OBx0GoiyUyoCJ8dhl1dUtmN4f3qQ9naWj+8YvZfLXhHrgbDkRQA4J0zz6wMoj8a6qY8fPoiphEWKt3MCgCc3syXj/R1MgUNTmv0P8r3I=
   file_glob: true
   file: "MonoKickStart*.zip"
-  name: $TRAVIS_TAG
   on:
     all_branches: true
     #branch: mono4.4
