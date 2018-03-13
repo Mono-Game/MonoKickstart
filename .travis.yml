@@ -22,20 +22,21 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./buildmcs ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd build ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip ./MonoKickStartOSX.zip kick.bin.osx mcs.bin.osx ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mv ./MonoKickStartOSX.zip .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" ubuntu:12.04
   /bin/bash -c "/Source/buildlinux64" ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" erwinchang/ubuntu-12.04-32bit
   /bin/bash -c "linux32 --32bit i386 /Source/buildlinux32" ; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mkdir build ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ./MonoKickStartLinux.zip kick.bin.x86_64 mcs.bin.x86_64 kick.bin.x86 mcs.bin.x86 ; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mv MonoKickStartLinux.zip build/MonoKickStartLinux.zip ; fi
 deploy:
   skip_cleanup: true
   provider: releases
   api_key:
     secure: E/VCIKBbZAW7Qcopw9OLUwLkNkSCg36uZ3yPRhEs3Qf5cPUUZ8SAraz0/dzR016T6B+OBx0GoiyUyoCJ8dhl1dUtmN4f3qQ9naWj+8YvZfLXhHrgbDkRQA4J0zz6wMoj8a6qY8fPoiphEWKt3MCgCc3syXj/R1MgUNTmv0P8r3I=
-  file: build/*.zip
+  file_glob: true
+  file: "MonoKickStart*.zip"
+  name: $TRAVIS_TAG
   on:
     all_branches: true
     #branch: mono4.4
