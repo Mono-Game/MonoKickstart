@@ -9,7 +9,7 @@ compiler:
 services:
 - docker
 script:
-- 
+- ./upgrade
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp /Library/Frameworks/Mono.framework/Versions/Current/lib/libmonosgen-2.0.a ./ ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir build ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd build ; fi
