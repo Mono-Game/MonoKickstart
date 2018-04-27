@@ -1,10 +1,15 @@
 #!/bin/bash
 cd precompiled
 FILES=*.dll
+DIR=/Library/Frameworks/Mono.framework/Libraries/mono/4.5
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+  DIR=/usr/lib/mono/4.5
+fi
 for f in $FILES
 do
-  if [ -f /Library/Frameworks/Mono.framework/Libraries/mono/4.5/$f ]
+  if [ -f $DIR/$f ]
   then
-    cp /Library/Frameworks/Mono.framework/Libraries/mono/4.5/$f .
+    cp $DIR/$f .
   fi
 done
