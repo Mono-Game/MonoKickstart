@@ -9,26 +9,27 @@ compiler:
 services:
 - docker
 script:
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp /Library/Frameworks/Mono.framework/Versions/Current/lib/libmonosgen-2.0.a
-  ./ ; fi
+- 
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp /Library/Frameworks/Mono.framework/Versions/Current/lib/libmonosgen-2.0.a ./ ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir build ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd build ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig
-  ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake -DCMAKE_OSX_ARCHITECTURES="i386;x86_64"
-  .. ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake -DCMAKE_OSX_ARCHITECTURES="i386;x86_64" .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./buildmcs ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd build ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip ./MonoKickStartOSX.zip kick.bin.osx mcs.bin.osx ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mv ./MonoKickStartOSX.zip .. ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd .. ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd ../precompiled ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip ../MonoKickStartOSX.zip Kick Mono.*.dll System.*.dll System.dll WindowsBase.dll monoconfig mscorlib.dll mono/**/* ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" ubuntu:12.04
   /bin/bash -c "/Source/buildlinux64" ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" erwinchang/ubuntu-12.04-32bit
   /bin/bash -c "linux32 --32bit i386 /Source/buildlinux32" ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ./MonoKickStartLinux.zip kick.bin.x86_64 mcs.bin.x86_64 kick.bin.x86 mcs.bin.x86 ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ../precompiled ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ../MonoKickStartOSX.zip Kick Mono.*.dll System.*.dll System.dll WindowsBase.dll monoconfig mscorlib.dll mono/**/* ; fi
 deploy:
   skip_cleanup: true
   provider: releases
