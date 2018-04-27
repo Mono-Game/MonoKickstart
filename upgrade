@@ -3,5 +3,8 @@ cd precompiled
 FILES=*.dll
 for f in $FILES
 do
-  cp /Library/Frameworks/Mono.framework/Libraries/mono/4.5/$f .
+  if [ -f /Library/Frameworks/Mono.framework/Libraries/mono/4.5/$f ]
+  then
+    cp /Library/Frameworks/Mono.framework/Libraries/mono/4.5/$f .
+  fi
 done
