@@ -40,6 +40,6 @@ deploy:
   file: "MonoKickStart*.zip"
   on:
     all_branches: true
-    #branch: mono4.4
+    branch: mono4.4
     repo: MonoGame/MonoKickstart
    
