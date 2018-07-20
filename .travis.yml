@@ -31,6 +31,8 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pwd ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ./precompiled ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ../MonoKickStartLinux.zip Kick Mono.*.dll System.*.dll System.dll WindowsBase.dll monoconfig mscorlib.dll mono/**/* ; fi
+before_deploy:
+- ls *.zip
 deploy:
   skip_cleanup: true
   provider: releases
