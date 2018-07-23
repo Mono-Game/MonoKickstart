@@ -5,6 +5,7 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BF
 echo "deb http://download.mono-project.com/repo/ubuntu precise main" | tee /etc/apt/sources.list.d/mono-official.list
 apt-get update
 apt-get --assume-yes install pkg-config cmake build-essential mono-devel mono-runtime-sgen
+mono --version
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/pkgconfig
 cp /usr/lib/libmono-2.0.a ../libmonosgen-2.0.a
 cmake -DCMAKE_C_FLAGS="-m64" ..
