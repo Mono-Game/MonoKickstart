@@ -13,4 +13,5 @@ mkbundle --static --keeptemp -o mcs.bin.x86_64 -L /usr/lib/mono/4.5/ /usr/lib/mo
 patch temp.c ../mcs.c.patch
 cc -o 'mcs.bin.x86_64' -Wall temp.c `pkg-config --cflags --libs mono-2`  temp.o
 cp /Source/build64/*.bin.x86_64 /Source/
+cp /usr/lib/libMonoPosixHelper.so /Source/libMonoPosixHelper.so.x86_64
 

@@ -23,11 +23,14 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mv ./MonoKickStartOSX.zip .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd ../precompiled ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip ../MonoKickStartOSX.zip Kick Mono.*.dll System.*.dll System.dll WindowsBase.dll monoconfig mscorlib.dll mono/**/* ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd ../osx ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip ../../MonoKickStartOSX.zip libMonoPosixHelper.dylib ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" ubuntu:12.04
   /bin/bash -c "/Source/buildlinux64" ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run -i -v "${PWD}:/Source" erwinchang/ubuntu-12.04-32bit
   /bin/bash -c "linux32 --32bit i386 /Source/buildlinux32" ; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ./MonoKickStartLinux.zip kick.bin.x86_64 mcs.bin.x86_64 kick.bin.x86 mcs.bin.x86 ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ./MonoKickStartLinux.zip kick.bin.x86_64 mcs.bin.x86_64 kick.bin.x86 mcs.bin.x86 libMonoPosixHelper.so.x86 libMonoPosixHelper.so.x86_64 ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pwd ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ./precompiled ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip ../MonoKickStartLinux.zip Kick Mono.*.dll System.*.dll System.dll WindowsBase.dll monoconfig mscorlib.dll mono/**/* ; fi
