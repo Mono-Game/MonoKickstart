@@ -15,3 +15,4 @@ patch temp.c ../mcs.c.patch
 cc -o 'mcs.bin.x86' -Wall temp.c `pkg-config --cflags --libs mono-2`  temp.o
 cp /Source/build32/*.bin.x86 /Source/
 cp /usr/lib/libMonoPosixHelper.so /Source/libMonoPosixHelper.so.x86
+cp /usr/lib/mono/4.5/mscorlib.dll /Source/precompiled/mscorlib.dll
