@@ -16,8 +16,6 @@
 	<dllmap dll="oci" target="libclntsh.dylib" os="osx"/>
 	<dllmap dll="db2cli" target="libdb2_36.so" os="linux"/>
 	<dllmap dll="db2cli" target="libdb2_36.dylib" os="osx"/>
-	<dllmap dll="MonoPosixHelper" target="libMonoPosixHelper.so" os="linux"/>
-	<dllmap dll="MonoPosixHelper" target="libMonoPosixHelper.dylib" os="osx"/>
 	<dllmap dll="gdiplus.dll" target="libgdiplus.so.0.0.0" os="linux"/>
 	<dllmap dll="gdiplus.dll" target="libgdiplus.dylib" os="osx"/>
 	<dllmap dll="i:msvcrt" target="libc.so.6" os="linux"/>
@@ -34,6 +32,9 @@
 	<dllmap dll="libcairo-2.dll" target="libcairo.2.dylib" os="osx"/>
 	<dllmap dll="libcups" target="libcups.so.2" os="linux"/>
 	<dllmap dll="libcups" target="libcups.dylib" os="osx"/>
+        <dllmap dll="MonoPosixHelper" os="osx" target="libMonoPosixHelper.dylib"/>
+        <dllmap dll="MonoPosixHelper" os="linux" cpu="x86" target="./x86/libMonoPosixHelper.so"/>
+        <dllmap dll="MonoPosixHelper" os="linux" cpu="x86-64" target="./x64/libMonoPosixHelper.so"/>
 	<dllmap dll="i:kernel32.dll">
 		<dllentry dll="__Internal" name="CopyMemory" target="mono_win32_compat_CopyMemory"/>
 		<dllentry dll="__Internal" name="FillMemory" target="mono_win32_compat_FillMemory"/>
