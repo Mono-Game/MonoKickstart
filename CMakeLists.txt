@@ -14,7 +14,7 @@ elseif(FORCE32)
 endif()
 
 if (APPLE)
-    //SET(BIN_LIBROOT "osx")
+    #SET(BIN_LIBROOT "osx")
     SET(CMAKE_EXECUTABLE_SUFFIX ".bin.osx")
     SET(CMAKE_EXE_LINKER_FLAGS "-framework Foundation")
     SET(KICKLIBS iconv)
